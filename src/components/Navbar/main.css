@@ -1,3 +1,21 @@
-.navber-bg{
-    background-color: aquamarine;
+.nav-container{
+    background-color: #FF0000;
+    display: flex;
+    padding: 0rem;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    display: flex;
+    padding: 3rem;
+    margin-left: 2rem;
+    background-color: #000;
+}
+.nav-button{
+    color: #FFF;
+    padding: 0 3rem 0 3rem;
+
+}
+.nav-button-container{
+    display: flex;
 }
