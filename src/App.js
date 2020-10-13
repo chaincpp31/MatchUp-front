@@ -1,14 +1,14 @@
 import React, {Suspense} from 'react';
 import Navbar from "./components/Navbar";
-import InformationEvent from "./components/InformationEvent";
+import InformationEvent from "./pages/InformationEvent";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routes from "./config/routes";
+import withHelmet from "./utils/with-Helmet"
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Router>
+    <Router>
         <Navbar />
         <Suspense fallback="...loading">
           <switch>
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default withHelmet('MatchUp') (App);
