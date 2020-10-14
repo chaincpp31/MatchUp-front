@@ -8,7 +8,7 @@ const NavContainer = styled.div`
 background-color: #FF0000;
 width: 100vw;
 height: 10vh;
-/* position: fixed; */
+position: fixed;
     display: flex;
     padding: 0rem;
     margin: 0rem;
