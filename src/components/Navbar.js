@@ -47,7 +47,10 @@ height: 10vh;
 
     const Action = styled.li`
   padding: 0 1rem;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  /* text-align: center; */
+  align-content: center;
 `
 
 
