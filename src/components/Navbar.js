@@ -10,8 +10,8 @@ width: 100vw;
 height: 10vh;
 position: fixed;
     display: flex;
-    padding: 0rem;
-    margin: 0rem;
+    padding: 0;
+    margin: 0;
     justify-content: space-between;
     align-items: center;
     `
@@ -59,6 +59,8 @@ const Action = styled.li`
     }
 `;
 
+
+
 function Navbar() {
   return (
     <NavContainer>
@@ -77,7 +79,7 @@ function Navbar() {
               <Link to="/about">ABOUT</Link>
             </Action>
             <Action>
-              <Link to="/login">LOGIN</Link>
+              <Link>LOGIN</Link>
             </Action>
           </NavButtonContainer>
         </ActionContainer>
