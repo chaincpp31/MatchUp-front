@@ -20,8 +20,6 @@ function Register() {
         <>
         <Container>
         <InputForm/>
-        tffffffffffffffffffffffffffffy
-        ftydtyftydrft
         </Container>
         </>
     )
