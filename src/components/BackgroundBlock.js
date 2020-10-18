@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const BackgroundImage = styled.div`
   height: 100vh;
   width: auto;
-  background-image: url(${props => props.src});
+  background-image: url(${prop => prop.src});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -13,20 +13,21 @@ const BackgroundImage = styled.div`
   position: relative;
 `
 const BackgroundOverlay = styled.div`
-  position: absolute;
+  display: flex;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 100%);
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `
-function BackgroundBlock ({ src, height = 100, children }) {
+
+function BackgroundBlock({ src, height = 100, children }) {
   return (
     <BackgroundImage src={src} height={height}>
       <BackgroundOverlay>{children}</BackgroundOverlay>
     </BackgroundImage>
   )
 }
+
 export default BackgroundBlock
