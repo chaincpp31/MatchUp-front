@@ -12,7 +12,7 @@ import useScroll from '../../utils/useScroll'
 
 function Navbar() {
   const isScroll = useScroll(20)
-
+  
   return (
     <NavContainer isScroll={isScroll}>
       <Wrapper>
