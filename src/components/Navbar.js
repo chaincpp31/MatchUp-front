@@ -5,16 +5,16 @@ import styled from "styled-components";
 import logoImg from "../assets/LogoMatchUp.png";
 
 const NavContainer = styled.div`
-background-color: #FF0000;
-width: 100vw;
-height: 10vh;
-position: fixed;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    justify-content: space-between;
-    align-items: center;
-    `
+  background-color: #ff0000;
+  width: 100vw;
+  height: 10vh;
+  /* position: fixed; */
+  display: flex;
+  padding: 0rem;
+  margin: 0rem;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const Logo = styled.div`
   display: flex;
@@ -59,8 +59,6 @@ const Action = styled.li`
     }
 `;
 
-
-
 function Navbar() {
   return (
     <NavContainer>
@@ -79,7 +77,7 @@ function Navbar() {
               <Link to="/about">ABOUT</Link>
             </Action>
             <Action>
-              <Link>LOGIN</Link>
+              <Link to="/login">LOGIN</Link>
             </Action>
           </NavButtonContainer>
         </ActionContainer>

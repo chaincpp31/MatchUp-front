@@ -18,7 +18,7 @@ const StyledInput = styled(BaseInput)`
   border-bottom: 5px solid #ccc;
   font-size: 30px;
   background-color: transparent;
-  color: white;
+  color: black;
   width: 100%;
   transition: border-bottom 0.3s;
 
@@ -45,7 +45,7 @@ function Input({ onSubmit = () => null }, { children }) {
   return (
     <InputContainer onSubmit={handleSubmit}>
       <StyledInput
-        value={value} 
+        value={value}
         onChange={handleInputChange}
         placeholder={children}
       />

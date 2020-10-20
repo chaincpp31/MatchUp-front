@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { reset } from "styled-reset";
+import { createGlobalStyle } from 'styled-components'
+import { reset } from 'styled-reset'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -8,19 +8,18 @@ const GlobalStyle = createGlobalStyle`
     
         height:100vh;
         width:100vw;
-        font-family 'Kanit',sans-serif;
+        font-family :'Kanit',sans-serif;
         font-size:20px;
+
         scroll-behavior:smooth;
 
   }
 
   a{
     text-decoration:none;
-    color:#fff;
-
-    
+    color:inherit;
   }
 
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle
