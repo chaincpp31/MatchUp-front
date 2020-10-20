@@ -1,6 +1,6 @@
-// import { lazy } from "react";
+import { lazy } from "react";
 
-// export default {
+export default {
 //   Home: {
 //     path: "/",
 //     exact: true,
@@ -16,9 +16,9 @@
 //     exact: true,
 //     component: lazy(() => import("../pages/About")),
 //   },
-//   Register: {
-//       path: "/register",
-//       exact: true,
-//       component: lazy(() => import("../pages/Register"))
-//   }
-// };
+  Register: {
+      path: "/register",
+      exact: true,
+      component: lazy(() => import("../pages/Register"))
+  }
+};
