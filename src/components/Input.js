@@ -45,7 +45,7 @@ function Input({ onSubmit = () => null },{children}) {
   return (
     <InputContainer onSubmit={handleSubmit}>
       <StyledInput
-        value={value}
+        value={value} 
         onChange={handleInputChange}
         placeholder={children}
       />
