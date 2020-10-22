@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Input from "../components/Input";
+// import Input from "../components/Input";
 
 const Container = styled.div`
   padding: 15vh 0vw 0vh 0vw;
@@ -44,7 +44,7 @@ const Tab = styled.div`
   /* display: none; */
 `;
 
-const input = styled.div``;
+
 
 
 
@@ -86,7 +86,7 @@ function Form(){
         <Tab>
             <H1>Sign Up</H1>
             <H2>Name</H2>
-            <Input placeholder="AKA" />
+            <Input placeholder="First name..." oninput="this.className = ''" name="fname" />
             <H2>First Name</H2>
             <Input />
             <H2>Last Name</H2>
@@ -107,7 +107,7 @@ showTab(currentTab)
 
 function showTab(n) {
   var x = document.getElementsByClassName("tab");
-  // x[n] =
+  x[n].style.display = "block";
   if (n==0){
     document.getElementById("prevBtn").style.display = "none";
   } else {
@@ -118,7 +118,7 @@ function showTab(n) {
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
-  // fixStepIndicator(n);
+  fixStepIndicator(n);
 }
 
   function nextPrev(n) {
