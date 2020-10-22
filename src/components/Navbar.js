@@ -7,7 +7,7 @@ import logoImg from "../assets/LogoMatchUp.png";
 const NavContainer = styled.div`
   background-color: #ff0000;
   width: 100vw;
-  height: 10vh;
+  height: 5vh;
   /* position: fixed; */
   display: flex;
   padding: 0rem;
