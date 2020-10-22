@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+// import RegisterForm from "../components/RegisterForm/ShowTab";
 
 const Container = styled.div`
   padding: 0;
   display: flex;
+  flex-direction: column;
   margin: 2rem;
+  background-color: green;
 `;
 const InputForm = styled.div`
   display: flex;
@@ -19,7 +22,11 @@ function Register() {
     return(
         <>
         <Container>
-        <InputForm/>
+          ASasASSFASDFGAD
+        <InputForm>
+        ASDADSADasdasdasd
+        {/* <RegisterForm/> */}
+        </InputForm>
         </Container>
         </>
     )
