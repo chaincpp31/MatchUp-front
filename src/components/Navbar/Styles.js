@@ -12,7 +12,7 @@ export const NavContainer = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex: 1;
-  padding: 1rem;
+  padding: .3rem;
 `
 
 export const ActionContainer = styled.ul`
