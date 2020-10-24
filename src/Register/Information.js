@@ -45,6 +45,7 @@ export default function Information({ formProps: { register, errors }, data }) {
             <Grid item md={12} xs={12}>
               <Grid item md={12} xs={12}>
                 <TextField
+                autoFocus
                   id="name"
                   label="Name"
                   name="name"
