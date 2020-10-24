@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     },
     marginTop: '10rem',
     margin: 'auto',
-    border: '1px solid #ebedf0',
+    border: '8px solid #ebedf0',
     borderRadius: '4px',
     [theme.breakpoints.down('xs')]: {
       marginTop: '3rem'
