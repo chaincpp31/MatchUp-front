@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import StepperForm from './StepperForm'
+import { green, red } from '@material-ui/core/colors';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   logo: {
@@ -15,14 +18,15 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: '1rem'
   },
   border: {
-    border: '0.15rem solid #d597ce',
+    // border: '0.15rem solid #d597ce',
     borderRadius: '2px',
     padding: '2%',
+    height: '0',
     width: '19rem',
     textAlign: 'center'
   },
   topLayout: {
-    margin: '4rem 0',
+    margin: '0rem 0',
     [theme.breakpoints.down('xs')]: {
       margin: '1rem 0'
     }
@@ -45,28 +49,50 @@ const useStyles = makeStyles(theme => ({
 export default function Register() {
   const classes = useStyles()
   return (
-    <Fragment>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.topLayout}>
-        <Grid item md={11} xs={11}>
-          <Paper className={classes.paperLayout}>
-            <Grid container>
-              <Grid item md={12} xs={12}>
-                <div className={classes.logo}>
-                  <div className={classes.border}>REGISTER</div>
-                </div>
-              </Grid>
-              <Grid item md={12} xs={12}>
-                <StepperForm />
-              </Grid>
+    <div
+      style={{
+        backgroundColor: 'black',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+      <Fragment>
+        <Container
+          // component="div"
+          style={{
+            backgroundColor: 'black',
+            height: '100vh',
+            width: '100vw',
+            margin: '0rem'
+          }}>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            className={classes.topLayout}>
+            <Grid item md={11} xs={11}>
+              <Paper
+                className={classes.paperLayout}
+                style={{
+                  backgroundColor: '#dcdfe3',
+                  color: 'red'
+                }}>
+                <Grid container>
+                  <Grid item md={12} xs={12}>
+                    <div className={classes.logo}>
+                      <div className={classes.border}>REGISTER</div>
+                    </div>
+                  </Grid>
+                  <Grid item md={12} xs={12}>
+                    <StepperForm />
+                  </Grid>
+                </Grid>
+              </Paper>
             </Grid>
-          </Paper>
-        </Grid>
-      </Grid>
-    </Fragment>
+          </Grid>
+        </Container>
+      </Fragment>
+    </div>
   )
 }
