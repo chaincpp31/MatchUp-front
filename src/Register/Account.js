@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Account({ formProps: { register, errors }, data }) {
+export default function Account({ formProps : { register, errors }, data }) {
   const classes = useStyles()
   const { email, username, password, confirmPassword } = data[0]
 
@@ -66,8 +66,9 @@ export default function Account({ formProps: { register, errors }, data }) {
               margin="normal"
               variant="outlined"
               inputRef={register}
-              error={!!errors.email}
+              error={( errors.email === undefined ? false : true )}
               defaultValue={email}
+              helperText={errors.email && String(errors.email.message)}
             />
             {errors.email && (
               <p className={classes.errorMessage}>{errors.email.message}</p>
