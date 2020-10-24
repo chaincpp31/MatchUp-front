@@ -19,12 +19,16 @@ const useStyles = makeStyles(theme => ({
   backButton: {
     marginRight: theme.spacing(1)
   },
+  nextButton: {
+    backgroundColor: 'red'
+  },
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1)
   },
   buttonLayout: {
     marginLeft: '7rem',
+    padding: '0 1rem 0 15rem',
     [theme.breakpoints.down('xs')]: {
       marginLeft: '0'
     }
@@ -39,7 +43,7 @@ const informationSchema = yup.object().shape({
 
 const accountSchema = yup.object().shape({
   username: yup.string().required('This field is required.'),
-  email: yup.string().email('Invalid email.').required('This field is required.'),
+  email : yup.string().email('Invalid email.').required('This field is required.'),
   password: yup.string().required('This field is required.').min(3, 'Please Enter less then 3 letters'),
   confirmPassword: yup.string().required('This field is required.').min(3, 'This field at least 3 characters.').oneOf([yup.ref('password'), null], 'Password not match.')
 });
@@ -108,6 +112,8 @@ export default function StepperForm() {
         return <Account formProps={accountForm} data={account} />
       case 2:
         return <Address formProps={addressForm} data={address}/>
+        case 3:
+          return "Success"
       default:
         return 'Unknown stepIndex';
     }
@@ -119,8 +125,9 @@ export default function StepperForm() {
         onSubmit={
           activeStep === 0
             ? informationForm.handleSubmit(onSubmit)
-            : activeStep ===1 ? accountForm.handleSubmit(onSubmit)
-            :  addressForm.handleSubmit(onSubmit)
+            : activeStep === 1
+            ? accountForm.handleSubmit(onSubmit)
+            : addressForm.handleSubmit(onSubmit)
         }>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => (
@@ -152,7 +159,11 @@ export default function StepperForm() {
                   variant="outlined">
                   Back
                 </Button>
-                <Button variant="contained" color="primary" type="submit">
+                <Button
+                  variant="contained"
+                  className={classes.nextButton}
+                  color="primary"
+                  type="submit">
                   {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                 </Button>
               </div>
