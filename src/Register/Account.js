@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useState,useEffect, } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
+import RegisterAPI from '../services/RegisterApi'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,10 +29,46 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Account({ formProps : { register, errors }, data }) {
+export default function Account({ formProps : { register, errors }, data ,callback}) {
   const classes = useStyles()
   const { email, username, password, confirmPassword } = data[0]
 
+  
+  const [values, setValues] = useState({
+    name:'',
+    user_name:'',
+    password:'',
+    first_name:'',
+    last_name:'',
+    email:'',
+    phone_number:'',
+    age:'',
+    birth_day:'',
+    status:''
+
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  
+  const handleChange = e => {
+    const { name, value } = e.target
+    setValues({
+      ...values,
+      [name]: value
+    })
+  }
+  
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(values, '1')
+    RegisterAPI(values)
+    // console.log(values)
+  }
+  
+  useEffect(() => {
+    if (isSubmitting) {
+      callback()
+    }
+  }, [])
   return (
     <Fragment>
       <div className={classes.root}>
@@ -45,7 +82,9 @@ export default function Account({ formProps : { register, errors }, data }) {
             variant="outlined"
             inputRef={register}
             error={!!errors.username}
-            defaultValue={username}
+            defaultValue={values.user_name}
+            // value={values.user_name}
+            onChange={handleChange}
           />
           {errors.username && (
             <p className={classes.errorMessage}>{errors.username.message}</p>
@@ -67,8 +106,10 @@ export default function Account({ formProps : { register, errors }, data }) {
               variant="outlined"
               inputRef={register}
               error={( errors.email === undefined ? false : true )}
-              defaultValue={email}
+              defaultValue={values.email}
               helperText={errors.email && String(errors.email.message)}
+              // value={values.email}
+            onChange={handleChange}
             />
             {errors.email && (
               <p className={classes.errorMessage}>{errors.email.message}</p>
@@ -85,7 +126,9 @@ export default function Account({ formProps : { register, errors }, data }) {
               type="password"
               inputRef={register}
               error={!!errors.password}
-              defaultValue={password}
+              defaultValue={values.password}
+              // value={values.password}
+              onChange={handleChange}
             />
             {errors.password && (
               <p className={classes.errorMessage}>{errors.password.message}</p>
