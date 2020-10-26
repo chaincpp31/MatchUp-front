@@ -7,6 +7,9 @@ import { getData } from '../services/fetchData'
 import FetchData from '../services/fetchData'
 import ListGame from '../components/ListGame/index'
 import Image from '../assets/LogoMatchUp.png'
+import lol from '../assets/LOL.jpg'
+import pubg from '../assets/pubg.jpg'
+import dota from '../assets/Data.jpg'
 
 const Content = styled.div`
   display: flex;
@@ -17,6 +20,8 @@ const Content = styled.div`
   border: 1rem;
   border-width: 80%;
   justify-content:center;
+  flex-direction: column;
+  align-items: center;
 `
 
 const ListContainer = styled.div`
@@ -38,7 +43,7 @@ const ListImg = styled.div`
 
   background-color: #1234;
   border-radius:10px;
-  background-image: url(${Image});
+  background-image: url(${props => props.src});
   background-position: center;
   background-size: cover;
   position:relative;
@@ -77,9 +82,19 @@ const Button = styled.button`
   padding: 5px 10px;
   background-color: red;
   color: white;
+  &:hover{
+    background-color: #DC2100;
+  }
 `
 const RowItem = styled.div`
-  
+  display:flex;
+`
+const Title = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 50px 0;
 `
 
 function Home(item) {
@@ -87,8 +102,23 @@ function Home(item) {
     <div>
       <BackgroundBlock src={backgroundImage} height="100" />
       <Content id="content">
+        <Title>LeagueofLegend</Title>
+        <RowItem id='League'>
         <ListContainer>
-          <ListImg src={Image}/>
+          <ListImg src={lol}/>
+          <ListDetails>
+            <Top>
+            <a>Name</a>
+            <a>Total</a>
+            </Top>
+            <Bottom>
+              <a>Date</a>
+              <Button >Join</Button>
+            </Bottom>
+          </ListDetails>
+        </ListContainer>
+        <ListContainer>
+          <ListImg src={lol}/>
           <ListDetails>
             <Top>
             <a>Name</a>
@@ -101,7 +131,7 @@ function Home(item) {
           </ListDetails>
         </ListContainer>
         <ListContainer>
-          <ListImg src={Image}/>
+          <ListImg src={lol}/>
           <ListDetails>
             <Top>
             <a>Name</a>
@@ -114,7 +144,23 @@ function Home(item) {
           </ListDetails>
         </ListContainer>
         <ListContainer>
-          <ListImg src={Image}/>
+          <ListImg src={lol}/>
+          <ListDetails>
+            <Top>
+            <a>Name</a>
+            <a>Total</a>
+            </Top>
+            <Bottom>
+              <a>Date</a>
+              <Button>Join</Button>
+            </Bottom>
+          </ListDetails>
+        </ListContainer>
+        </RowItem>
+      <Title>DOTA</Title>
+      <RowItem id='Dota'>
+        <ListContainer>
+          <ListImg src={dota}/>
           <ListDetails>
             <Top>
             <a>Name</a>
@@ -127,7 +173,7 @@ function Home(item) {
           </ListDetails>
         </ListContainer>
         <ListContainer>
-          <ListImg src={Image}/>
+          <ListImg src={dota}/>
           <ListDetails>
             <Top>
             <a>Name</a>
@@ -139,7 +185,90 @@ function Home(item) {
             </Bottom>
           </ListDetails>
         </ListContainer>
+        <ListContainer>
+          <ListImg src={dota}/>
+          <ListDetails>
+            <Top>
+            <a>Name</a>
+            <a>Total</a>
+            </Top>
+            <Bottom>
+              <a>Date</a>
+              <Button>Join</Button>
+            </Bottom>
+          </ListDetails>
+        </ListContainer>
+        <ListContainer>
+          <ListImg src={dota}/>
+          <ListDetails>
+            <Top>
+            <a>Name</a>
+            <a>Total</a>
+            </Top>
+            <Bottom>
+              <a>Date</a>
+              <Button>Join</Button>
+            </Bottom>
+          </ListDetails>
+        </ListContainer>
+        </RowItem>
+        <Title>PUBG</Title>
+      <RowItem id='Dota'>
+        <ListContainer>
+          <ListImg src={pubg}/>
+          <ListDetails>
+            <Top>
+            <a>Name</a>
+            <a>Total</a>
+            </Top>
+            <Bottom>
+              <a>Date</a>
+              <Button>Join</Button>
+            </Bottom>
+          </ListDetails>
+        </ListContainer>
+        <ListContainer>
+          <ListImg src={pubg}/>
+          <ListDetails>
+            <Top>
+            <a>Name</a>
+            <a>Total</a>
+            </Top>
+            <Bottom>
+              <a>Date</a>
+              <Button>Join</Button>
+            </Bottom>
+          </ListDetails>
+        </ListContainer>
+        <ListContainer>
+          <ListImg src={pubg}/>
+          <ListDetails>
+            <Top>
+            <a>Name</a>
+            <a>Total</a>
+            </Top>
+            <Bottom>
+              <a>Date</a>
+              <Button>Join</Button>
+            </Bottom>
+          </ListDetails>
+        </ListContainer>
+        <ListContainer>
+          <ListImg src={pubg}/>
+          <ListDetails>
+            <Top>
+            <a>Name</a>
+            <a>Total</a>
+            </Top>
+            <Bottom>
+              <a>Date</a>
+              <Button>Join</Button>
+            </Bottom>
+          </ListDetails>
+        </ListContainer>
+        </RowItem>
       </Content>
+
     </div>
   )
 }
