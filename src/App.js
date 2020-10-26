@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import routes from './config/routes'
 import Register from './Register/Register';
 import Login from './components/Login'
+import CreateEvent from './pages/CreateEvent';
 // import { ReactComponent as Check } from './assets'
 
 // import Home from './pages/Home';
@@ -52,30 +53,31 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar setSession={setSession} ></Navbar>
+        <Navbar setSession={setSession}></Navbar>
         <GlobalStyle />
         <Suspense fallback="...loading">
           <Switch>
             {Object.keys(routes).map(routeKey => (
-              <Route key={routeKey} {...routes[routeKey]} />
+              <Route key={routeKey} {...routes[routeKey]}>
+                {session.isLoggedIn ? (
+                  <>
+                    <CreateEvent setSession={setSession} />
+                    <h1>
+                      Hell! {session.currentUser && session.currentUser.email}
+                    </h1>
+                    <button type="button" onClick={handleLogout}>
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <div>try again</div>
+                    <Login setSession={setSession} />
+                  </>
+                )}
+              </Route>
             ))}
           </Switch>
-              {session.isLoggedIn ? (
-              <>
-                <Register setSession={setSession} />
-                <h1>
-                  Hell! {session.currentUser && session.currentUser.email}
-                </h1>
-                <button type="button" onClick={handleLogout}>
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <div>try again</div>
-                <Login setSession={setSession} />
-              </>
-            )}
         </Suspense>
       </Router>
       {/* <Footer/> */}
