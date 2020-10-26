@@ -96,9 +96,6 @@ const Navbar = ({ setSession }) => {
               <Link to="/">HOME</Link>
             </Action>
             <Action>
-              <Link to="/game">GAME</Link>
-            </Action>
-            <Action>
               <Link to="/about">ABOUT</Link>
             </Action>
             <Action>
