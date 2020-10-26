@@ -47,43 +47,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-
-
 export default function Register(callback) {
-  const [values, setValues] = useState({
-    name: '',
-    user_name: '',
-    password: '',
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone_number: '',
-    age: '',
-    birth_day: '',
-    status: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  
-  const handleChange = e => {
-    const { name, value } = e.target
-    setValues({
-      ...values,
-      [name]: value
-    })
-  }
-  
-  const handleSubmit = e => {
-    e.preventDefault()
-    console.log(values, '1')
-    RegisterAPI(values)
-    // console.log(values)
-  }
-  
-  useEffect(() => {
-    if (isSubmitting) {
-      callback()
-    }
-  }, [])
   const classes = useStyles()
   return (
     <div 
@@ -95,7 +59,6 @@ export default function Register(callback) {
       }}>
       <Fragment>
         <Container 
-          onSubmit={handleSubmit}
           // component="div"
           style={{
             backgroundColor: 'black',

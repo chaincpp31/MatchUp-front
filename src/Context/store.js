@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext,useEffect } from "react";
 
 export const StoreContext = createContext({})
 
@@ -43,6 +43,8 @@ export const StoreContextProvider = ({ children }) => {
     stepTwo: [stepTwo, setStepTwo]
   }
   console.log(store)
+
+
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 }
 
