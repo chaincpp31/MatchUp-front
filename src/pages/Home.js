@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import backgroundImage from '../assets/BackgroundMatchup.jpg'
 import BackgroundBlock from '../components/BackgroundBlock'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { getData } from '../services/fetchData'
-import FetchData from '../services/fetchData'
-import ListGame from '../components/ListGame/index'
+// import { Link } from 'react-router-dom'
+// import { getData } from '../services/fetchData'
+// import FetchData from '../services/fetchData'
+
 import Image from '../assets/LogoMatchUp.png'
 
 const Content = styled.div`
