@@ -47,21 +47,21 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const [values, setValues] = useState({
-  name: '',
-  user_name: '',
-  password: '',
-  first_name: '',
-  last_name: '',
-  email: '',
-  phone_number: '',
-  age: '',
-  birth_day: '',
-  status: ''
-})
 
 
 export default function Register(callback) {
+  const [values, setValues] = useState({
+    name: '',
+    user_name: '',
+    password: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone_number: '',
+    age: '',
+    birth_day: '',
+    status: ''
+  })
   const [isSubmitting, setIsSubmitting] = useState(false)
   
   const handleChange = e => {
