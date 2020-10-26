@@ -81,7 +81,7 @@ export default function Register() {
                 <Grid container>
                   <Grid item md={12} xs={12}>
                     <div className={classes.logo}>
-                      <div className={classes.border}>REGISTER</div>
+                      <div className={classes.border}>CREATE EVENT</div>
                     </div>
                   </Grid>
                   <Grid item md={12} xs={12}>
