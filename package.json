@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier-standard": "^3.0.1",
-    "eslintrc": "^1.0.6"
+    "eslintrc": "^1.0.6",
+    "react-testing-library": "^8.0.1"
   }
 }
