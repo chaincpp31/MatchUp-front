@@ -9,13 +9,16 @@ export default {
   CreateEvent: {
     path: "/createEvent",
     exact: true,
-    component: lazy(() => import("./../pages/CreateEvent")),
+    component: lazy(() => import("../pages/CreateEvent")),
   },
+  
   // Game: {
   //   path: "/game",
   //   exact: true,
   //   component: lazy(() => import("../pages/Game")),
   // },
+
+
   About: {
     path: "/about",
     exact: true,
