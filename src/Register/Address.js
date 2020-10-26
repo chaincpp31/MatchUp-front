@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useState,useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
@@ -6,7 +6,7 @@ import Select from '@material-ui/core/Select'
 import { MenuItem } from '@material-ui/core'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
-
+import RegisterAPI from '../services/RegisterApi'
 const useStyles = makeStyles(theme => ({
   root: {
     margin: '-1rem 0 2rem 0',
@@ -39,10 +39,45 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Account({ formProps: { register, errors }, data }) {
+export default function Account({ formProps: { register, errors }, data ,callback}) {
   const classes = useStyles()
   const { phone, birth, age, gender } = data[0]
 
+  const [values, setValues] = useState({
+    name:'',
+    user_name:'',
+    password:'',
+    first_name:'',
+    last_name:'',
+    email:'',
+    phone_number:'',
+    age:'',
+    birth_day:'',
+    status:''
+
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  
+  const handleChange = e => {
+    const { name, value } = e.target
+    setValues({
+      ...values,
+      [name]: value
+    })
+  }
+  
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(values, '1')
+    RegisterAPI(values)
+    // console.log(values)
+  }
+  
+  useEffect(() => {
+    if (isSubmitting) {
+      callback()
+    }
+  }, [])
   return (
     <Fragment>
       <div className={classes.root}>
@@ -62,7 +97,9 @@ export default function Account({ formProps: { register, errors }, data }) {
               variant="outlined"
               inputRef={register}
               error={!!errors.phone}
-              defaultValue={phone}
+              defaultValue={values.phone_number}
+              
+            onChange={handleChange}
             />
             {errors.phone && (
               <p className={classes.errorMessage}>{errors.phone.message}</p>
@@ -78,7 +115,9 @@ export default function Account({ formProps: { register, errors }, data }) {
               variant="outlined"
               inputRef={register}
               error={!!errors.birth}
-              defaultValue={birth}
+              defaultValue={values.birth_day}
+              
+            onChange={handleChange}
             />
             {errors.birth && (
               <p className={classes.errorMessage}>{errors.birth.message}</p>
@@ -101,7 +140,9 @@ export default function Account({ formProps: { register, errors }, data }) {
               variant="outlined"
               inputRef={register}
               error={!!errors.age}
-              defaultValue={age}
+              defaultValue={values.age}
+              
+            onChange={handleChange}
             />
             {errors.age && (
               <p className={classes.errorMessage}>{errors.age.message}</p>
