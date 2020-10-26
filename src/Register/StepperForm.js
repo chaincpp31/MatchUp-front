@@ -1,4 +1,4 @@
-import React, {useContext,useState} from 'react'
+import React, {useContext,useState,useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
@@ -12,7 +12,7 @@ import {useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import {StoreContext} from '../Context/store'
 import auth from '../components/firebase'
-
+import RegisterAPI from '../services/RegisterApi'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,7 +63,41 @@ function getSteps  () {
   return ['Step 1', 'Step 2','Step 3','Step 4']
 }
 
-export default function StepperForm() {
+export default function StepperForm(callback) {
+  const [values, setValues] = useState({
+    name: '',
+    user_name: '',
+    password: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone_number: '',
+    age: '',
+    birth_day: '',
+    status: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  
+  const handleChange = e => {
+    const { name, value } = e.target
+    setValues({
+      ...values,
+      [name]: value
+    })
+  }
+  
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(values, '1')
+    RegisterAPI(values)
+    // console.log(values)
+  }
+  
+  useEffect(() => {
+    if (isSubmitting) {
+      callback()
+    }
+  }, [])
   const classes = useStyles()
   const { information, account, address} = useContext(StoreContext)
   const informationForm = useForm({
@@ -128,6 +162,7 @@ export default function StepperForm() {
     <div className={classes.root}>
       <form
         onSubmit={
+          handleSubmit,
           activeStep === 0
             ? informationForm.handleSubmit(onSubmit)
             : activeStep === 1
