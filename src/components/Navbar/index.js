@@ -10,6 +10,7 @@ import {
 import { Link } from 'react-router-dom'
 import useScroll from '../../utils/useScroll'
 import Button from '@material-ui/core/Button'
+
 import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
@@ -20,7 +21,7 @@ import styled from 'styled-components'
 
 function Navbar() {
   const BtnRgt = styled.span`
-  color: blue;
+    color: blue;
   `
   const [open, setOpen] = React.useState(false)
 
@@ -33,7 +34,7 @@ function Navbar() {
   }
 
   const isScroll = useScroll(20)
-  
+
   return (
     <NavContainer isScroll={isScroll}>
       <Wrapper>
@@ -88,6 +89,9 @@ function Navbar() {
                 </DialogActions>
               </Dialog>
             </Action>
+              <Action>
+                <Link to="/CreateEvent">Create</Link>
+              </Action>
           </NavButtonContainer>
         </ActionContainer>
       </Wrapper>
