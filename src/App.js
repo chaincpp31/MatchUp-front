@@ -12,6 +12,7 @@ import routes from './config/routes'
 import Register from './Register/Register';
 import Login from './components/Login'
 import CreateEvent from './CreateEvent/CreateEvent';
+import Home from './pages/Home'
 // import { ReactComponent as Check } from './assets'
 
 // import Home from './pages/Home';
@@ -59,28 +60,29 @@ function App() {
           <Switch>
             {Object.keys(routes).map(routeKey => (
               <Route key={routeKey} {...routes[routeKey]}>
-                {session.isLoggedIn ? (
-                  <>
-                    <CreateEvent setSession={setSession} />
-                    <h1>
-                      Hell! {session.currentUser && session.currentUser.email}
-                    </h1>
-                    <button type="button" onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <div>try again</div>
-                    <Login setSession={setSession} />
-                  </>
-                )}
+                <Switch>
+                  {session.isLoggedIn ? (
+                    <>
+                      <CreateEvent setSession={setSession} />
+                      <h1>
+                        Hell! {session.currentUser && session.currentUser.email}
+                      </h1>
+                      <button type="button" onClick={handleLogout}>
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Home setSession={setSession} />
+                    </>
+                  )}
+                </Switch>
               </Route>
             ))}
           </Switch>
         </Suspense>
       </Router>
-      <Footer/>
+      <Footer />
       {/* <Register/> */}
       {/* <InformationEvent /> */}
     </>
