@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext,useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
@@ -11,6 +11,7 @@ import Address from './Address'
 import {useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import {StoreContext} from '../Context/store'
+import auth from '../components/firebase'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,7 +56,9 @@ const addressSchema = yup.object().shape({
   gender: yup.string().required('This field is required to select'),
 });
 
-function getSteps() {
+
+  
+function getSteps  () {
   return ['Step 1', 'Step 2','Step 3','Step 4']
 }
 
@@ -104,7 +107,8 @@ export default function StepperForm() {
     handleNext()
   }
 
-  function getStepContent(stepIndex) {
+  function getStepContent (stepIndex) {
+
     switch (stepIndex) {
       case 0:
         return <Information formProps={informationForm} data={information} />
