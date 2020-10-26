@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Fragment,useState,useEffect,useCallback } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import StepperForm from './StepperForm'
-import { green, red } from '@material-ui/core/colors';
-import Container from '@material-ui/core/Container';
+import { green, red } from '@material-ui/core/colors'
+import Container from '@material-ui/core/Container'
+import RegisterAPI from '../services/RegisterApi'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
@@ -46,10 +47,46 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Register() {
+const [values, setValues] = useState({
+  name: '',
+  user_name: '',
+  password: '',
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone_number: '',
+  age: '',
+  birth_day: '',
+  status: ''
+})
+
+
+export default function Register(callback) {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  
+  const handleChange = e => {
+    const { name, value } = e.target
+    setValues({
+      ...values,
+      [name]: value
+    })
+  }
+  
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(values, '1')
+    RegisterAPI(values)
+    // console.log(values)
+  }
+  
+  useEffect(() => {
+    if (isSubmitting) {
+      callback()
+    }
+  }, [])
   const classes = useStyles()
   return (
-    <div
+    <div 
       style={{
         backgroundColor: 'black',
         display: 'flex',
@@ -57,7 +94,8 @@ export default function Register() {
         alignItems: 'center'
       }}>
       <Fragment>
-        <Container
+        <Container 
+          onSubmit={handleSubmit}
           // component="div"
           style={{
             backgroundColor: 'black',
