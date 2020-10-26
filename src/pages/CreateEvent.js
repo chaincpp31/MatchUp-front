@@ -1,12 +1,12 @@
 import React from 'react'
-import InputCreate from './../components/InputCreate'
-import BackgroundBlock from '../components/BackgroundBlock'
+import Createevent from './../CreateEvent/CreateEvent'
+
 function CreateEvent() {
   return (
     <div>
-      <BackgroundBlock>
-        <InputCreate />
-      </BackgroundBlock>
+
+        <Createevent />
+
     </div>
   )
 }

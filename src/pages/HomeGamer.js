@@ -82,7 +82,7 @@ const RowItem = styled.div`
   
 `
 
-function Home(item) {
+function HomeGamer(item) {
   return (
     <div>
       <BackgroundBlock src={backgroundImage} height="100" />
@@ -96,7 +96,7 @@ function Home(item) {
             </Top>
             <Bottom>
               <a>Date</a>
-              <Button>Join</Button>
+            
             </Bottom>
           </ListDetails>
         </ListContainer>
@@ -109,7 +109,7 @@ function Home(item) {
             </Top>
             <Bottom>
               <a>Date</a>
-              <Button>Join</Button>
+            
             </Bottom>
           </ListDetails>
         </ListContainer>
@@ -122,7 +122,7 @@ function Home(item) {
             </Top>
             <Bottom>
               <a>Date</a>
-              <Button>Join</Button>
+              
             </Bottom>
           </ListDetails>
         </ListContainer>
@@ -135,7 +135,7 @@ function Home(item) {
             </Top>
             <Bottom>
               <a>Date</a>
-              <Button>Join</Button>
+              
             </Bottom>
           </ListDetails>
         </ListContainer>
@@ -143,4 +143,4 @@ function Home(item) {
     </div>
   )
 }
-export default Home
+export default HomeGamer

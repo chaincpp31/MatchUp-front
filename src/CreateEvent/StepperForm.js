@@ -1,18 +1,16 @@
-import React, {useContext,useState} from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import Information from './Information'
-import Account from './Account'
-import Address from './Address'
-import {useForm} from 'react-hook-form'
+import StepOne from './StepOne'
+import StepTwo from './StepTwo'
+import StepThree from './StepThree'
+import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
-import {StoreContext} from '../Context/store'
-import auth from '../components/firebase'
-
+import { StoreContext } from '../Context/store'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,45 +35,37 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const informationSchema = yup.object().shape({
-  firstName: yup.string().required('This field is required.'),
-  lastName: yup.string().required('This field is required.'),
+const stepOneSchema = yup.object().shape({
   name: yup.string().required('This field is required.'),
-});
+  description: yup.string().required('This field is required.')
+})
 
-const accountSchema = yup.object().shape({
-  username: yup.string().required('This field is required.'),
-  email : yup.string().email('Invalid email.').required('This field is required.'),
-  password: yup.string().required('This field is required.').min(3, 'Please Enter less then 3 letters'),
-  confirmPassword: yup.string().required('This field is required.').min(3, 'This field at least 3 characters.').oneOf([yup.ref('password'), null], 'Password not match.')
-});
+const stepTwoSchema = yup.object().shape({
+  total: yup.string().required('This field is required.'),
+  date: yup.string().required('This field is required.')
+})
 
-const addressSchema = yup.object().shape({
-  phone: yup.number().required('This field is required phone number.'),
-  birth: yup.string().required('This field is required'),
-  age: yup.number().required('This field is required age'),
-  gender: yup.string().required('This field is required to select'),
-});
+const stepThreeSchema = yup.object().shape({
+  game: yup.string().required('This field is required.')
+})
 
-
-  
-function getSteps  () {
-  return ['Step 1', 'Step 2','Step 3','Step 4']
+function getSteps() {
+  return ['Step 1', 'Step 2', 'Step 3', 'Step 4']
 }
 
 export default function StepperForm() {
   const classes = useStyles()
-  const { information, account, address} = useContext(StoreContext)
-  const informationForm = useForm({
-    validationSchema: informationSchema
+  const { stepOne, stepTwo, stepThree } = useContext(StoreContext)
+  const StepOneForm = useForm({
+    validationSchema: stepOneSchema
   })
 
-  const accountForm = useForm({
-    validationSchema: accountSchema
+  const StepTwoForm = useForm({
+    validationSchema: stepTwoSchema
   })
 
-  const addressForm = useForm({
-    validationSchema: addressSchema
+  const StepThreeForm = useForm({
+    validationSchema: stepThreeSchema
   })
 
   const [activeStep, setActiveStep] = React.useState(0)
@@ -90,37 +80,36 @@ export default function StepperForm() {
   }
 
   const handleReset = () => {
-    information[1]({})
-    account[1]({})
-    address[1]({})
+    stepOne[1]({})
+    stepTwo[1]({})
+    stepThree[1]({})
     setActiveStep(0)
   }
 
   const onSubmit = data => {
     console.log(data)
     if (activeStep === 0) {
-      information[1](data)
+      stepOne[1](data)
     } else if (activeStep === 1) {
-      account[1](data)
+      stepTwo[1](data)
     } else if (activeStep === 2) {
-      address[1](data)
+      stepThree[1](data)
     }
     handleNext()
   }
 
-  function getStepContent (stepIndex) {
-
+  function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <Information formProps={informationForm} data={information} />
+        return <StepOne formProps={StepOneForm} data={stepOne} />
       case 1:
-        return <Account formProps={accountForm} data={account} />
+        return <StepTwo formProps={StepTwoForm} data={stepTwo} />
       case 2:
-        return <Address formProps={addressForm} data={address}/>
-        case 3:
-          return "Success"
+        return <StepThree formProps={StepThreeForm} data={stepThree} />
+      case 3:
+        return 'Success'
       default:
-        return 'Unknown stepIndex';
+        return 'Unknown stepIndex'
     }
   }
 
@@ -129,10 +118,12 @@ export default function StepperForm() {
       <form
         onSubmit={
           activeStep === 0
-            ? informationForm.handleSubmit(onSubmit)
+            ? StepOneForm.handleSubmit(onSubmit)
             : activeStep === 1
-            ? accountForm.handleSubmit(onSubmit)
-            : addressForm.handleSubmit(onSubmit)
+            ? StepTwoForm.handleSubmit(onSubmit)
+            : activeStep === 2
+            ? StepThreeForm.handleSubmit(onSubmit)
+            : activeStep === 3
         }>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => (

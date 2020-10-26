@@ -80,7 +80,7 @@ function App() {
           </Switch>
         </Suspense>
       </Router>
-      {/* <Footer/> */}
+      <Footer/>
       {/* <Register/> */}
       {/* <InformationEvent /> */}
     </>
