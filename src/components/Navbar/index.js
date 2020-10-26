@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState} from 'react'
+import auth from '../firebase'
 import {
   NavButtonContainer,
   NavContainer,
@@ -19,7 +20,58 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import styled from 'styled-components'
 
-function Navbar() {
+  
+
+
+const Navbar = ({ setSession }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await auth.signInWithEmailAndPassword(username, password);
+      const { user } = response;
+
+      setSession({
+        isLoggedIn: true,
+        currentUser: user
+      });
+    } catch (error) {
+      setSession({
+        isLoggedIn: false,
+        currentUser: null,
+        errorMessage: error.message
+      });
+    } setOpen(false)
+  };
+  const handleRegister = async () => {
+    try {
+      const response = await auth.createUserWithEmailAndPassword(
+        username,
+        password
+      )
+      const { user } = response
+      setSession({
+        isLoggedIn: true,
+        currentUser: user
+      })
+    } catch (error) {
+      setSession({
+        isLoggedIn: false,
+        currentUser: null,
+        errorMessage: error.essage
+      })
+    }
+  }
+  const handleUsername = event => {
+    setUsername(event.target.value)
+  }
+
+  const handlePassword = event => {
+    setPassword(event.target.value)
+  }
+
+
   const BtnRgt = styled.span`
     color: blue;
   `
@@ -63,6 +115,7 @@ function Navbar() {
                     id="username"
                     label="Username"
                     type="username"
+                    onChange={handleUsername}
                     fullWidth
                   />
                   <TextField
@@ -70,6 +123,7 @@ function Navbar() {
                     id="password"
                     label="Password"
                     type="password"
+                    onChange={handlePassword}
                     fullWidth
                   />
                 </DialogContent>
@@ -83,7 +137,7 @@ function Navbar() {
                   <Button onClick={handleClose} color="primary">
                     Cancel
                   </Button>
-                  <Button onClick={handleClose} color="primary">
+                  <Button onClick={handleLogin} color="primary">
                     Login
                   </Button>
                 </DialogActions>
@@ -98,5 +152,6 @@ function Navbar() {
     </NavContainer>
   )
 }
+
 
 export default Navbar

@@ -13,6 +13,12 @@ import {useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import { StoreContext } from '../Context/store'
 
+
+
+const API_REGIDTER_DATA = 'http://localhost:3333/clients';
+
+
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',

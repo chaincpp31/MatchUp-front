@@ -11,6 +11,7 @@ import Address from './Address'
 import {useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import {StoreContext} from '../Context/store'
+import auth from '../components/firebase'
 
 
 const useStyles = makeStyles(theme => ({
@@ -56,7 +57,9 @@ const addressSchema = yup.object().shape({
   gender: yup.string().required('This field is required to select'),
 });
 
-function getSteps() {
+
+  
+function getSteps  () {
   return ['Step 1', 'Step 2','Step 3','Step 4']
 }
 
@@ -105,8 +108,8 @@ export default function StepperForm() {
     handleNext()
   }
 
+  function getStepContent (stepIndex) {
 
-  function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
         return <Information formProps={informationForm} data={information} />

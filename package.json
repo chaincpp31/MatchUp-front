@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "editorconfig": "^0.15.3",
     "eslint-config-standard": "^14.1.1",
+    "firebase": "^7.24.0",
     "prettier-config-standard": "^1.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -50,6 +51,7 @@
     "axios": "^0.21.0",
     "eslint-config-prettier-standard": "^3.0.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "eslintrc": "^1.0.6"
+    "eslintrc": "^1.0.6",
+    "react-testing-library": "^8.0.1"
   }
 }
