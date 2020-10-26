@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import routes from './config/routes'
 import Register from './Register/Register';
 import Login from './components/Login'
-import CreateEvent from './pages/CreateEvent';
+import CreateEvent from './CreateEvent/CreateEvent';
 // import { ReactComponent as Check } from './assets'
 
 // import Home from './pages/Home';
