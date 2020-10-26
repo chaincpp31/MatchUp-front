@@ -6,12 +6,17 @@ export default {
     exact: true,
     component: lazy(() => import("./../pages/Home")),
   },
+  HomeGamer: {
+    path: "/HomeGamer",
+    exact: true,
+    component: lazy(() => import("./../pages/HomeGamer")),
+  },
   CreateEvent: {
     path: "/createEvent",
     exact: true,
     component: lazy(() => import("../pages/CreateEvent")),
   },
-  
+
   // Game: {
   //   path: "/game",
   //   exact: true,
