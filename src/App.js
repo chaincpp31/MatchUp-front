@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import routes from './config/routes'
 import Register from './Register/Register';
 import Login from './components/Login'
+// import { ReactComponent as Check } from './assets'
 
 // import Home from './pages/Home';
 // import Register from './pages/Register'
