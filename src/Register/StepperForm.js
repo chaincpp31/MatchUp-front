@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext,useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
@@ -11,6 +11,7 @@ import Address from './Address'
 import {useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import {StoreContext} from '../Context/store'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -103,6 +104,7 @@ export default function StepperForm() {
     }
     handleNext()
   }
+
 
   function getStepContent(stepIndex) {
     switch (stepIndex) {
