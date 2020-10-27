@@ -201,7 +201,7 @@ const {session:[session,setSession]} = useContext(StoreContext)
                       <Link>Cancel</Link>
                     </Button>
                     <Button onClick={handleLogin} color="primary">
-                      Login
+                      <Link>Login</Link>
                     </Button>
                   </DialogActions>
                 </Dialog>
