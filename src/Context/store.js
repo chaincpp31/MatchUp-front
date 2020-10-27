@@ -1,8 +1,32 @@
 import React, { useState, createContext,useEffect } from "react";
+import auth from '../components/firebase'
 
 export const StoreContext = createContext({})
 
 export const StoreContextProvider = ({ children }) => {
+const [session,setSession] = useState({
+          isLoggedIn: false,
+          currentUser: "",
+          errorMessage: null
+})
+useEffect(() => {
+    const handleAuth = auth.onAuthStateChanged(user => {
+      if (user) {
+        setSession({
+          isLoggedIn: true,
+          currentUser: user,
+          errorMessage: null
+        });
+      }
+    });
+
+    return () => {
+      handleAuth();
+    };
+  }, []);
+
+
+
   const [information, setInformation] = useState({
     firstName: undefined,
     lastName: undefined,
@@ -40,7 +64,8 @@ export const StoreContextProvider = ({ children }) => {
     account: [account, setAccount],
     address: [address, setAddress],
     stepOne: [stepOne, setStepOne],
-    stepTwo: [stepTwo, setStepTwo]
+    stepTwo: [stepTwo, setStepTwo],
+    session: [session,setSession]
   }
   console.log(store)
 
