@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from 'react'
+import React, { Suspense, useState, useEffect,useContext } from 'react'
 import auth from './components/firebase'
 import Navbar from "./components/Navbar/index";
 // import InformationEvent from "./pages/InformationEvent";
@@ -13,6 +13,7 @@ import Register from './Register/Register';
 import Login from './components/Login'
 import CreateEvent from './CreateEvent/CreateEvent';
 import Home from './pages/Home'
+import { StoreContext} from './Context/store'
 // import { ReactComponent as Check } from './assets'
 
 // import Home from './pages/Home';
@@ -20,11 +21,7 @@ import Home from './pages/Home'
 // import CreateEvent from './pages/CreateEvent';
 
 function App() {
-  const [session, setSession] = useState({
-    isLoggedIn: false,
-    currentUser: null,
-    errorMessage: null
-  });
+  const {session:[session,setSession]} = useContext(StoreContext)
 
   useEffect(() => {
     const handleAuth = auth.onAuthStateChanged(user => {
@@ -60,23 +57,21 @@ function App() {
           <Switch>
             {Object.keys(routes).map(routeKey => (
               <Route key={routeKey} {...routes[routeKey]}>
-                <Switch>
-                  {session.isLoggedIn ? (
-                    <>
-                      <CreateEvent setSession={setSession} />
-                      <h1>
-                        Hell! {session.currentUser && session.currentUser.email}
-                      </h1>
-                      <button type="button" onClick={handleLogout}>
-                        Logout
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <Home setSession={setSession} />
-                    </>
-                  )}
-                </Switch>
+                {session.isLoggedIn ? (
+                  <>
+                    <CreateEvent session={setSession} />
+                    <h1>
+                      {session.currentUser && session.currentUser.email} is Login
+                    </h1>
+                    <button type="button" onClick={handleLogout}>
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Home setSession={setSession} />
+                  </>
+                )}
               </Route>
             ))}
           </Switch>
