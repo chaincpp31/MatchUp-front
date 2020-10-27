@@ -75,7 +75,7 @@ export default function Register() {
               <Paper
                 className={classes.paperLayout}
                 style={{
-                  backgroundColor: '#dcdfe3',
+                  // backgroundColor: '#dcdfe3',
                   color: 'red'
                 }}>
                 <Grid container>
