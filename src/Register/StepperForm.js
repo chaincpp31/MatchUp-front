@@ -180,7 +180,7 @@ export default function StepperForm(callback) {
           {activeStep === steps.length ? (
             <div className={classes.buttonLayout}>
               <Typography className={classes.instructions}>
-                All steps completed
+               Completed press reset and back to Home page
               </Typography>
               <Button variant="contained" color="primary" onClick={handleReset}>
                 Reset
