@@ -151,6 +151,7 @@ const {session:[session,setSession]} = useContext(StoreContext)
       <Wrapper>
         <ActionContainer>
           <NavButtonContainer>
+            {session.isLoggedIn? (session.currentUser && session.currentUser.email):("") }
             <Action>
               <Link to="/">HOME</Link>
             </Action>
@@ -160,7 +161,7 @@ const {session:[session,setSession]} = useContext(StoreContext)
             <Action>
               <Link
                 onClick={session.isLoggedIn ? handleLogout : handleClickOpen}>
-                {session.isLoggedIn ? 'Logout' : 'Login'}
+                {session.isLoggedIn ? 'Logout'  : 'Login'}
               </Link>
               {!session.isLoggedIn ? (
                 <Dialog
