@@ -60,12 +60,7 @@ function App() {
                 {session.isLoggedIn ? (
                   <>
                     <CreateEvent session={setSession} />
-                    <h1>
-                      {session.currentUser && session.currentUser.email} is Login
-                    </h1>
-                    <button type="button" onClick={handleLogout}>
-                      Logout
-                    </button>
+                   
                   </>
                 ) : (
                   <>
