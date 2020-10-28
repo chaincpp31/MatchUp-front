@@ -10,6 +10,7 @@
     "editorconfig": "^0.15.3",
     "eslint-config-standard": "^14.1.1",
     "firebase": "^7.24.0",
+    "firebase-admin": "^9.3.0",
     "prettier-config-standard": "^1.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
